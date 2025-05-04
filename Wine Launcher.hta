@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <title>Wine Launcher</title>
+<hta:application
+        id="Launcher"
+        applicationname="Launcher"
+        border="thin"
+        borderstyle="normal"
+        caption="yes"
+        contextmenu="no"
+        icon="C:\Code\Launcher\580b57fcd9996e24bc43c55c.ico"
+        innerborder="no"
+        maximizebutton="yes"
+        minimizebutton="yes"
+        navigable="yes"
+        scroll="no"
+        scrollflat="yes"
+        selection="yes"
+        showintaskbar="yes"
+        singleinstance="yes"
+        sysmenu="yes"
+    />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #FFFFFF;
+            font-size: 24px;
+        }
+
+        button {
+            background-color: #000000;
+            color: #FEFFFF;
+            border: 1px solid #FEFFFF;
+            padding: 15px;
+            margin: 8px;
+            cursor: pointer;
+			font-size: 20px;
+        }
+
+        button:hover {
+            background-color: #919191;
+            color: #282c34;
+        }
+    </style>
+    <script>
+        function runProgram(programPath) {
+            var objShell = new ActiveXObject("WScript.Shell");
+            objShell.Run('"' + programPath + '"', 1, false);
+        }
+
+        function openProgram(programPath, programName) {
+            var choice = confirm("Willst du " + programName + " öffnen?");
+            if (choice) {
+                runProgram(programPath);
+            }
+        }
+
+        function openWebsiteInChrome(url) {
+            var objShell = new ActiveXObject("WScript.Shell");
+            objShell.Run('chrome.exe "' + url + '"', 1, false);
+        }
+
+        function openWebsite(url) {
+            var newWindow = window.open(url, "_blank");
+            newWindow.focus();
+        }
+
+        function closeLauncher() {
+            var objShell = new ActiveXObject("WScript.Shell");
+            objShell.AppActivate("Launcher");
+            objShell.SendKeys("%{F4}");
+        }
+
+        function openMultiplePrograms(programPaths, programNames) {
+            var paths = programPaths.split(",");
+            var names = programNames.split(",");
+            for (var i = 0; i < paths.length; i++) {
+                openProgram(paths[i], names[i]);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1 style="font-size: 72px;">Wine Launcher</h1>
+<p style="font-size: 18px;"><b>
+    	by KERS_EX x ChatGPT</p></b>
+    <p align="center">
+        <br>
+        <button onclick="openProgram('C:\\Riot Games\\Riot Client\\RiotClientServices.exe', 'Programm 1')"><b>Riot Games</b></button>
+        <button onclick="openProgram('C:\\Program Files\\LGHUB\\system_tray\\lghub_system_tray.exe', 'Programm 2')"><b>Logitech G Hub</b></button>
+        <button onclick="openProgram('C:\\Program Files\\Google\\Play Games\\Bootstrapper.exe', 'Programm 3')"><b>Google Play</b></button>
+        <br>
+        <br>
+		<button onclick="openProgram('C:\\Program Files (x86)\\Epic Games\\Launcher\\Portal\\Binaries\\Win32\\EpicGamesLauncher.exe', 'Programm 4')"><b>Epic Games</b></button>
+        <button onclick="openProgram('C:\\Program Files\\Epic Games\\Fortnite\\FortniteGame\\Binaries\\Win64\\FortniteClient-Win64-Shipping.exe', 'Programm 5')"><b>Fortnite</b></button>
+		<button onclick="openProgram('C:\\Program Files (x86)\Steam\steamapps\common\HighOnLife\Oregon.exe', 'Programm 6')"><b>High On Life</b></button>
+        <button onclick="openProgram('C:\\Program Files (x86)\\Steam\\steam.exe', 'Programm 7')"><b>Steam</b></button>
+        <br>
+        <br>
+        <button onclick="openProgram('C:\\Program Files\\Badlion Client\\Badlion Client.exe', 'Programm 8')"><b>Badlion Client</b></button>
+		<button onclick="openMultiplePrograms('D:/GTARP/ts3client_win64.exe,C:/Users/Fabian Kunz/AppData/Local/FiveM/FiveM.exe', 'Programm 9')"><b>GTA RP</b></button>
+		<button onclick="openProgram('C:\Program Files (x86)\Steam\steamapps\common\Titanfall2\Titanfall2.exe', 'Programm 10')"><b>Titanfall 2</b></button>
+		<button onclick="openMultiplePrograms('C:\\Program Files\\BakkesMod\\BakkesMod.exe,D:\\Epic Games\\rocketleague\\Binaries\\Win64\\rocketleague.exe', 'Programm 11')"><b>Rocket League</b></button>
+		<button onclick="openProgram('C:\\CMAssettoCorsa\\Content Manager.exe', 'Programm 12')"><b>Content Manager</b></button>
+		<br>
+		<br>
+		<br>
+		<button onclick="openProgram('K:\VisualStudio\IDE\Common7\IDE\devenv.exe', 'Programm 13')"><b>Visual Studio</b></button>
+		<button onclick="openProgram('C:/Program Files/Notepad++/notepad++.exe', 'Programm 14')">
+  <b>Notepad++</b>
+</button>
+
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<button onclick="openWebsiteInChrome('https://www.netflix.com/browse')"><b>Netflix</b></button>
+		<button onclick="openWebsiteInChrome('https://www.disneyplus.com/de-de/home')"><b>Disney</b></button>
+		<br>
+		<br>
+		<br>
+		<button onclick="closeLauncher()"><b>Close Launcher</b></button>
+	</p>
+</body>
+</html>
