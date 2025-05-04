@@ -1,2 +1,3 @@
-# Wine-Launcher
-(Not the "Emulator") 
+# Sorry if some things dont work, i have a big dataloss
+
+
